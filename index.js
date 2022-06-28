@@ -1,3 +1,4 @@
+// DESAFIO COMPLEMENTARIO 1
 /*
 
 let entrada = prompt ("Ingresar tu nombre de usuario")
@@ -75,3 +76,21 @@ if(tiempo <= 2 && personas <= 5){
 }else{
     alert("No disponible")
 }
+
+// 5. Array - Mostrar precios por resreva
+
+const servicios = [{ id: 1, servicio: "Fútbol", precio: 2500},
+                   { id: 2, servicio: "Tenis", precio: 1000},
+                   { id: 3, servicio: "Paddle", precio: 1500},
+                   { id: 4, servicio: "Hockey", precio: 2000}];
+
+for (const servicio of servicios){
+console.log (servicio.servicio);
+console.log (servicio.precio);
+
+}
+
+
+
+
+
