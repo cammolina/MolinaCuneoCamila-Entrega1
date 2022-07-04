@@ -1,27 +1,5 @@
-// DESAFIO COMPLEMENTARIO 1
-/*
-
-let entrada = prompt ("Ingresar tu nombre de usuario")
-
-while (entrada != "ESC") {
-    switch (entrada) {
-        case "CAMILA123":
-            alert ("Bienvenida CAMILA123")
-            break
-        case "RAMON":
-            alert ("Bienvenido RAMON")
-            break
-        default:
-            alert ("Ingreso incorrecto")
-            break
-}
-entrada = prompt("Ingresar tu nombre de usuario")
-}
-
-*/
-
-
 // PAGINA WEB DE ALQUILER DE CANCHAS DEPORTIVAS //  
+
 
 // 1. Saludar al usuario
 function saludar() {
@@ -32,6 +10,7 @@ function saludar() {
 saludar ()
 
 
+
 // 2. Verificar que sea mayor de edad
 let edad = prompt("Ingresa tu edad")
 
@@ -40,6 +19,7 @@ if(edad>=18){
 }else{
     alert("Lo lamento pero no puedes alquilar, no eres mayor de edad")
 }
+
 
 
 // 3. Selección de la actividad
@@ -66,6 +46,8 @@ switch (seleccionUsuario) {
         break;
 }
 
+
+
 // 4. Definiciion del valor
 
 let tiempo = prompt ("Ingrese el tiempo deseado de su reserva")
@@ -76,6 +58,8 @@ if(tiempo <= 2 && personas <= 5){
 }else{
     alert("No disponible")
 }
+
+
 
 // 5. Array - Mostrar precios por resreva
 
@@ -89,6 +73,24 @@ console.log (servicio.servicio);
 console.log (servicio.precio);
 
 }
+
+
+
+// 6. Functions - Fecha deseada de la reserva
+
+const fechaActual = new Date ()
+const milisegundosPorDia = 86400000
+
+const dia = parseInt (prompt("Ingresa el dia deseado de tu reserva"))
+const mes = parseInt (prompt("Ingresa el mes deseado de tu reserva"))
+const anio = parseInt (prompt("Ingresa el anio deseado de tu reserva"))
+
+const reserva = new Date (anio, mes-1, dia )
+const diferenciaDias = (reserva - fechaActual) / milisegundosPorDia
+//const diferenciaAnios = diferenciaDias / 365
+
+alert (`Reservaste para dentro de  ${Math.round (diferenciaDias)} dias`)
+alert (`Reservaste para el dia ${(reserva)}`)
 
 
 
