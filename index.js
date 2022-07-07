@@ -189,10 +189,10 @@ sumarCuotas(cuotaUno, cuotaDos, cuotaTres, cuotaCuatro)
 
 
 const productos = [
-    {nombre: 'Crema', precio: 1000},
-    {nombre: 'Jabon', precio: 1100},
-    {nombre: 'Shampoo', precio: 1250},
-    {nombre: 'Acondicionador', precio: 1250},
+    {nombre: 'Pelota', precio: 1000},
+    {nombre: 'Raqueta', precio: 1100},
+    {nombre: 'Paleta', precio: 1250},
+    {nombre: 'Bocha', precio: 1250},
 ]
 
 const resultado = productos.find((producto) => producto.nombre === "Botin")
