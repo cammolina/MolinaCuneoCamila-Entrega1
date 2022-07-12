@@ -1,6 +1,6 @@
 // PAGINA WEB DE ALQUILER DE CANCHAS DEPORTIVAS //  
 
-/*
+
 // 1. Saludar al usuario
 function saludar() {
     let nombre = prompt("¿Cual es tu nombre?")
@@ -21,7 +21,7 @@ if(edad>=18){
 }
 
 
-
+/*
 // 3. Selección de la actividad
 let seleccionUsuario = parseInt(
     prompt(
@@ -104,37 +104,32 @@ console.log(subtitulo.innerHTML);
 
 */
 
-
 // 7. Incluyendo DOM
 
 const listaProductos = [
     {
         id: 1,
         nombre: "Pelota",
-        precioCompra: "750",
-        precioVenta: "1000",
-        cantidad: 2,
+        precioVenta: "1500",
+        cantidad: 4,
     },
     {
         id: 2,
         nombre: "Raqueta",
-        precioCompra: "960",
-        precioVenta: "1100",
-        cantidad: 3,
+        precioVenta: "5000",
+        cantidad: 2,
     },
     {
         id: 3,
         nombre: "Paleta",
-        precioCompra: "980",
-        precioVenta: "1250",
-        cantidad: 5,
+        precioVenta: "8000",
+        cantidad: 1,
     },
     {
         id: 4,
         nombre: "Bocha",
-        precioCompra: "980",
-        precioVenta: "1250",
-        cantidad: 50,
+        precioVenta: "900",
+        cantidad: 3,
     }
 ];
 
@@ -150,10 +145,7 @@ for(const producto of listaProductos){
                 <p class="card-text"> Nombre: 
                     <b>${producto.nombre}</b>
                 <p/>
-                
-                <p class="card-text"> Precio compra: 
-                    <b>${producto.precioCompra}</b>
-                <p/>
+               
                 <p class="card-text"> Precio Venta: 
                     <b>${producto.precioVenta}</b>
                 <p/>
@@ -179,28 +171,28 @@ function sumarCuotas(cuotaUno, cuotaDos, cuotaTres, cuotaCuatro) {
     alert("La suma de sus compra es "+ suma)
 }
 
-let cuotaUno = parseInt(prompt("Ingrese el precio de su primer producto para calcular opcion de pago (recuerde que a cada cuota se le adiciona un 3% de interes) - Pelota ($1000), Raqueta ($1100), Paleta ($1250), Bocha ($1250)"))
-let cuotaDos = parseInt(prompt("Ingrese el precio de su segundo producto para calcular opcion de pago (recuerde que a cada cuota se le adiciona un 3% de interes)"))
-let cuotaTres = parseInt(prompt("Ingrese el precio de su tercer producto para calcular opcion de pago (recuerde que a cada cuota se le adiciona un 3% de interes)"))
-let cuotaCuatro = parseInt(prompt("Ingrese el precio de su primer producto para calcular opcion de pago (recuerde que a cada cuota se le adiciona un 3% de interes)"))
+let cuotaUno = parseInt(prompt("Ingrese el precio de su primer producto para calcular el total a abonar (*a cada cuota se le adiciona un 3% de interés) - PRECIOS: Pelota ($1500), Raqueta ($5000), Paleta ($8000), Bocha ($900)"))
+let cuotaDos = parseInt(prompt("Ingrese el precio de su segundo producto para calcular el total a abonar"))
+let cuotaTres = parseInt(prompt("Ingrese el precio de su tercer producto para calcular el total a abonar"))
+let cuotaCuatro = parseInt(prompt("Ingrese el precio de su primer producto para calcular el total a abonar"))
 
 sumarCuotas(cuotaUno, cuotaDos, cuotaTres, cuotaCuatro)
 
 
 
 const productos = [
-    {nombre: 'Pelota', precio: 1000},
-    {nombre: 'Raqueta', precio: 1100},
-    {nombre: 'Paleta', precio: 1250},
-    {nombre: 'Bocha', precio: 1250},
+    {nombre: 'Pelota', precio: 1500},
+    {nombre: 'Raqueta', precio: 5000},
+    {nombre: 'Paleta', precio: 8000},
+    {nombre: 'Bocha', precio: 900},
 ]
 
-const resultado = productos.find((producto) => producto.nombre === "Botin")
+const resultado = productos.find((producto) => producto.nombre === "Pelota")
 
 
 const resultadDos = productos.find((producto) => producto.nombre === "Raqueta")
 
-const resultadTres = productos.find((producto) => producto.nombre === "Paletao")
+const resultadTres = productos.find((producto) => producto.nombre === "Paleta")
 
 const resultadoCuatro = productos.find((producto) => producto.nombre === "Bocha")
 
@@ -209,3 +201,37 @@ console.log(resultado)
 console.log(resultadDos)
 console.log(resultadTres)
 console.log(resultadoCuatro)
+
+
+
+
+// 8. EVENTOS
+let formulario = document.getElementById ("formulario")
+let inputNombre = document.getElementById ("inputNombreProducto")
+let inputPrecioCompra = document.getElementById ("inputPrecioCompra")
+let inputDirrecionEntrega = document.getElementById ("inputDirrecionEntrega")
+let inputTelefono = document.getElementById ("inputTelefono")
+
+let pedidos = []
+
+class Pedidos{
+    constructor(nombre, precioCompra, dirrecionEntrega, telefono){
+        this.nombre = nombre.toUpperCase ()
+        this.precioCompra = precioCompra
+        this.dirrecionEntrega = dirrecionEntrega
+        this.telefono = telefono
+    }
+}
+
+
+formulario.onsubmit = (event) => validarFormulario (event)
+
+function validarFormulario (event) {
+    event.preventDefault ()
+    console.log (event.target)
+    console.log(inputNombre.value)
+    console.log(inputPrecioCompra.value)
+    console.log(inputDirrecionEntrega.value)
+    console.log(inputTelefono.value)
+}
+
