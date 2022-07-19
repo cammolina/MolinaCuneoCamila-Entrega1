@@ -233,5 +233,23 @@ function validarFormulario (event) {
     console.log(inputPrecioCompra.value)
     console.log(inputDirrecionEntrega.value)
     console.log(inputTelefono.value)
+
 }
 
+
+
+// 9. JSON & STORAGE
+
+
+localStorage.setItem("nombre", "Camila")
+localStorage.setItem("edad", "29")
+localStorage.setItem("correo", "camila@gmail.com")
+
+
+let nombre = localStorage.getItem("nombre")
+let edad1 = localStorage.getItem("edad")
+let correo = localStorage.getItem("correo")
+
+console.log("Nombre:" + nombre)
+console.log("Edad:" + edad)
+console.log("Correo:" + correo)
