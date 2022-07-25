@@ -174,7 +174,7 @@ function sumarCuotas(cuotaUno, cuotaDos, cuotaTres, cuotaCuatro) {
 let cuotaUno = parseInt(prompt("Ingrese el precio de su primer producto para calcular el total a abonar (*a cada cuota se le adiciona un 3% de interés) - PRECIOS: Pelota ($1500), Raqueta ($5000), Paleta ($8000), Bocha ($900)"))
 let cuotaDos = parseInt(prompt("Ingrese el precio de su segundo producto para calcular el total a abonar"))
 let cuotaTres = parseInt(prompt("Ingrese el precio de su tercer producto para calcular el total a abonar"))
-let cuotaCuatro = parseInt(prompt("Ingrese el precio de su primer producto para calcular el total a abonar"))
+let cuotaCuatro = parseInt(prompt("Ingrese el precio de su cuarto producto para calcular el total a abonar"))
 
 sumarCuotas(cuotaUno, cuotaDos, cuotaTres, cuotaCuatro)
 
@@ -253,3 +253,20 @@ let correo = localStorage.getItem("correo")
 console.log("Nombre:" + nombre)
 console.log("Edad:" + edad)
 console.log("Correo:" + correo)
+
+
+
+// 10. LIBRERIAS
+
+const btnMostrarAlert = document.getElementById ("btn-mostrar-alert");
+btnMostrarAlert.onclick = mostrarAlert;
+
+function mostrarAlert () {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Tu pedido ha sido guardado',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    }
