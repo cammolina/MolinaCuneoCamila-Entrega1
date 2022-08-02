@@ -270,3 +270,30 @@ function mostrarAlert () {
         timer: 1500
       })
     }
+
+
+// 11. FETCH
+
+function registrarProducto (producto) {
+    fetch("https://6244e0467701ec8f724a5a7f.mockapi.io/api/productos", {
+        method: "POST",
+        body: JSON.stringify(producto),
+        headers: {
+            "Content-type": "application/json"
+        }
+    })
+    .then((response) => response.json())
+    .then ((data) => console.log(data))
+}
+
+
+const productoARegistrar = {
+    "nombre": "Pelota",
+    "cantidad": 10,
+    "precioVenta": "1500",
+    "precioCompra": "2000",
+    "fecha": "2022-08-04T06:08:01.498Z",
+}
+
+
+registrarProducto(productoARegistrar)
