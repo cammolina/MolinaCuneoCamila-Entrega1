@@ -1,262 +1,147 @@
-// PAGINA WEB DE ALQUILER DE CANCHAS DEPORTIVAS //  
 
-
-// 1. Saludar al usuario
-function saludar() {
-    let nombre = prompt("¿Cual es tu nombre?")
-    alert("¡Hola!" + " " + nombre)
-}
-
-saludar ()
-
-
-
-// 2. Verificar que sea mayor de edad
-let edad = prompt("Ingresa tu edad")
-
-if(edad>=18){
-    alert("Eres mayor de edad")
-}else{
-    alert("Lo lamento pero no puedes alquilar, no eres mayor de edad")
-}
-
+// 1. Cambios guardados
 
 /*
-// 3. Selección de la actividad
-let seleccionUsuario = parseInt(
-    prompt(
-        "Que cancha desea alquilar: \n1. Fútbol \n2. Tenis  \n3. Padel \n4. Hockey"
-    )
-);
-
-switch (seleccionUsuario) {
-    case 1:
-        alert("Usted selecciono Fútbol");
-        break;
-    case 2:
-        alert("Usted selecciono Tenis");
-        break;
-    case 3:
-        alert("Usted selecciono Padel");
-        break;
-    case 4:
-        alert("Usted selecciono Hockey");
-        break;
-    default:
-        break;
-}
+Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Tu pedido ha sido enviado',
+    showConfirmButton: false,
+    timer: 1500
+  })
+  */
 
 
+  // 2. Countdown
 
-// 4. Definiciion del valor
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]
 
-let tiempo = prompt ("Ingrese el tiempo deseado de su reserva")
-let personas = prompt ("Ingrese la cantidad de personas que asistiran")
+  const weekdays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ]
 
-if(tiempo <= 2 && personas <= 5){
-    alert("Disponible")
-}else{
-    alert("No disponible")
-}
+  const giveaway = document.querySelector(".giveaway")
+  const deadline = document.querySelector (".deadline")
+  const items = document.querySelectorAll (".deadline-format h4")
 
+  let tempDate = new Date ()
+  let tempYear = tempDate.getFullYear()
+  let tempMonth = tempDate.getMonth()
+  let tempDay = tempDate.getDate()
 
+  //let futureDate = new Date (2022,8, 11, 11, 30, 0);
+  const futureDate = new Date (tempYear, tempMonth, tempDay + 10, 11, 30, 0 )
+  const year = futureDate.getFullYear()
+  const hours = futureDate.getHours()
+  const minutes = futureDate.getMinutes()
 
-// 5. Array - Mostrar precios por resreva
+  let month = futureDate.getMonth();
+  month = months[month]
 
-const servicios = [{ id: 1, servicio: "Fútbol", precio: 2500, cantidad: 1},
-                   { id: 2, servicio: "Tenis", precio: 1000, candidad: 2},
-                   { id: 3, servicio: "Paddle", precio: 1500, cantidad: 2},
-                   { id: 4, servicio: "Hockey", precio: 2000, cantidad: 1}];
+  const date = futureDate.getDate ();
 
-for (const servicio of servicios){
-console.log (servicio.servicio);
-console.log (servicio.precio);
-
-}
-
-
-
-// 6. Functions - Fecha deseada de la reserva
-
-const fechaActual = new Date ()
-const milisegundosPorDia = 86400000
-
-const dia = parseInt (prompt("Ingresa el dia deseado de tu reserva"))
-const mes = parseInt (prompt("Ingresa el mes deseado de tu reserva"))
-const anio = parseInt (prompt("Ingresa el anio deseado de tu reserva"))
-
-const reserva = new Date (anio, mes-1, dia )
-const diferenciaDias = (reserva - fechaActual) / milisegundosPorDia
-//const diferenciaAnios = diferenciaDias / 365
-
-alert (`Reservaste para dentro de  ${Math.round (diferenciaDias)} dias`)
-alert (`Reservaste para el dia ${(reserva)}`)
-
-
-let body = document.getElementById ("body1")
-let h2 = document.getElementById ("titulo")
-let parrafo = document.getElementById ("subtitulo")
-
-console.log(body1.innerHTML);
-console.log(titulo.innerHTML);
-console.log(subtitulo.innerHTML);
+  const weekday = weekdays [futureDate.getDay()];
 
 
-*/
+  giveaway.textContent = `giveaway ends on ${weekday}, ${date} ${month} ${year} ${hours}: ${minutes}am`;
 
-// 7. Incluyendo DOM
 
-const listaProductos = [
-    {
-        id: 1,
-        nombre: "Pelota",
-        precioVenta: "1500",
-        cantidad: 4,
-    },
-    {
-        id: 2,
-        nombre: "Raqueta",
-        precioVenta: "5000",
-        cantidad: 2,
-    },
-    {
-        id: 3,
-        nombre: "Paleta",
-        precioVenta: "8000",
-        cantidad: 1,
-    },
-    {
-        id: 4,
-        nombre: "Bocha",
-        precioVenta: "900",
-        cantidad: 3,
+  // future time in ms
+
+  const futureTime = futureDate.getTime()
+
+
+  function getRemainingTime(){
+    const today = new Date().getTime();
+    const t = futureTime - today;
+    
+    // 1s = 1000ms
+    // 1m = 60s
+    // 1 hr = 60min
+    // 1d = 24hs
+
+    // values in ms
+    const oneDay = 24*60*60*1000;
+    const oneHour = 60*60*1000;
+    const oneMinute = 60*1000;
+    
+
+    // calculate all values 
+    let days = t / oneDay
+    days = Math.floor(days)
+    let hours = Math.floor ((t % oneDay) / oneHour)
+    let minutes = Math.floor ((t % oneHour) / oneMinute)
+    let seconds = Math.floor ((t % oneMinute) / 1000)
+
+    // set values array
+    const values = [days,hours,minutes, seconds];
+
+    function format (item){
+        if (item < 10){
+            return item = `0${item}`
+        }
+        return item
+        }
+
+    items.forEach (function (item,index){
+        item.innerHTML = values[index]
+    })
+
+    if(t<0){
+        clearInterval(countdown)
+        deadline.innerHTML = `<h4 class="expired"> Sorry, this launch has ran out of stock </h4>`
     }
-];
+  }
 
-let contenedorProductos = document.getElementById("contenedor-productos")
-
-for(const producto of listaProductos){
-    let columna = document.createElement("div")
-    columna.className = "col-md-4 mt-3"
-    columna.id = `columna-${producto.id}`
-    columna.innerHTML = `
-        <div class="card">
-            <div class="card-body">
-                <p class="card-text"> Nombre: 
-                    <b>${producto.nombre}</b>
-                <p/>
-               
-                <p class="card-text"> Precio Venta: 
-                    <b>${producto.precioVenta}</b>
-                <p/>
-                <p class="card-text"> Cantidad: 
-                    <b>${producto.cantidad}</b>
-                <p/>
-            </div>
-        </div>
-    `
-
-    contenedorProductos.append(columna)
-}
+  // countdown
+  let countdown = setInterval (getRemainingTime, 1000)
 
 
-let columnaBorrar = document.getElementById ("columna-1")
-
-columnaBorrar.remove
-
-
-
-function sumarCuotas(cuotaUno, cuotaDos, cuotaTres, cuotaCuatro) {
-    let suma = (cuotaUno + cuotaDos + cuotaTres + cuotaCuatro)*1.3
-    alert("La suma de sus compra es "+ suma)
-}
-
-let cuotaUno = parseInt(prompt("Ingrese el precio de su primer producto para calcular el total a abonar (*a cada cuota se le adiciona un 3% de interés) - PRECIOS: Pelota ($1500), Raqueta ($5000), Paleta ($8000), Bocha ($900)"))
-let cuotaDos = parseInt(prompt("Ingrese el precio de su segundo producto para calcular el total a abonar"))
-let cuotaTres = parseInt(prompt("Ingrese el precio de su tercer producto para calcular el total a abonar"))
-let cuotaCuatro = parseInt(prompt("Ingrese el precio de su cuarto producto para calcular el total a abonar"))
-
-sumarCuotas(cuotaUno, cuotaDos, cuotaTres, cuotaCuatro)
-
-
-
-const productos = [
-    {nombre: 'Pelota', precio: 1500},
-    {nombre: 'Raqueta', precio: 5000},
-    {nombre: 'Paleta', precio: 8000},
-    {nombre: 'Bocha', precio: 900},
-]
-
-const resultado = productos.find((producto) => producto.nombre === "Pelota")
-
-
-const resultadDos = productos.find((producto) => producto.nombre === "Raqueta")
-
-const resultadTres = productos.find((producto) => producto.nombre === "Paleta")
-
-const resultadoCuatro = productos.find((producto) => producto.nombre === "Bocha")
-
-
-console.log(resultado)
-console.log(resultadDos)
-console.log(resultadTres)
-console.log(resultadoCuatro)
+  getRemainingTime()
 
 
 
 
-// 8. EVENTOS
-let formulario = document.getElementById ("formulario")
-let inputNombre = document.getElementById ("inputNombreProducto")
-let inputPrecioCompra = document.getElementById ("inputPrecioCompra")
-let inputDirrecionEntrega = document.getElementById ("inputDirrecionEntrega")
-let inputTelefono = document.getElementById ("inputTelefono")
-
-let pedidos = []
-
-class Pedidos{
-    constructor(nombre, precioCompra, dirrecionEntrega, telefono){
-        this.nombre = nombre.toUpperCase ()
-        this.precioCompra = precioCompra
-        this.dirrecionEntrega = dirrecionEntrega
-        this.telefono = telefono
-    }
-}
-
-
-formulario.onsubmit = (event) => validarFormulario (event)
-
-function validarFormulario (event) {
-    event.preventDefault ()
-    console.log (event.target)
-    console.log(inputNombre.value)
-    console.log(inputPrecioCompra.value)
-    console.log(inputDirrecionEntrega.value)
-    console.log(inputTelefono.value)
-
-}
-
-
-
-// 9. JSON & STORAGE
+// 2. JSON & STORAGE
 
 
 localStorage.setItem("nombre", "Camila")
 localStorage.setItem("edad", "29")
 localStorage.setItem("correo", "camila@gmail.com")
+localStorage.setItem("size", "7")
 
 
 let nombre = localStorage.getItem("nombre")
-let edad1 = localStorage.getItem("edad")
+let edad = localStorage.getItem("edad")
 let correo = localStorage.getItem("correo")
+let size = localStorage.getItem("size")
 
 console.log("Nombre:" + nombre)
 console.log("Edad:" + edad)
 console.log("Correo:" + correo)
+console.log("Size:" + size)
 
 
-
-// 10. LIBRERIAS
+// 3. SWEAT ALERT
 
 const btnMostrarAlert = document.getElementById ("btn-mostrar-alert");
 btnMostrarAlert.onclick = mostrarAlert;
@@ -267,12 +152,12 @@ function mostrarAlert () {
         icon: 'success',
         title: 'Tu pedido ha sido guardado',
         showConfirmButton: false,
-        timer: 1500
+        timer: 1000
       })
     }
 
 
-// 11. FETCH
+// 4. FETCH
 
 function registrarProducto (producto) {
     fetch("https://6244e0467701ec8f724a5a7f.mockapi.io/api/productos", {
@@ -288,10 +173,10 @@ function registrarProducto (producto) {
 
 
 const productoARegistrar = {
-    "nombre": "Pelota",
-    "cantidad": 10,
-    "precioVenta": "1500",
-    "precioCompra": "2000",
+    "nombre": "Zapatilla",
+    "cantidad": 1,
+    "precioVenta": "44000",
+    "precioCompra": "44000",
     "fecha": "2022-08-04T06:08:01.498Z",
 }
 
