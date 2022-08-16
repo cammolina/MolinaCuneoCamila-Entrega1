@@ -150,7 +150,7 @@ function mostrarAlert () {
     Swal.fire({
         position: 'top-end',
         icon: 'success',
-        title: 'Tu pedido ha sido guardado',
+        title: 'Your request has been saved',
         showConfirmButton: false,
         timer: 1000
       })
@@ -160,7 +160,7 @@ function mostrarAlert () {
 // 4. FETCH
 
 function registrarProducto (producto) {
-    fetch("https://6244e0467701ec8f724a5a7f.mockapi.io/api/productos", {
+    fetch("https://jsonplaceholder.typicode.com/posts/1/comments", {
         method: "POST",
         body: JSON.stringify(producto),
         headers: {
