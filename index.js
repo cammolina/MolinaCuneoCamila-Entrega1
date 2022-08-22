@@ -143,22 +143,24 @@ console.log("Size:" + size)
 
 // 3. SWEAT ALERT
 
-const btnMostrarAlert = document.getElementById ("btn-mostrar-alert");
-btnMostrarAlert.onclick = mostrarAlert;
+const formulario = document.getElementById ("formulario");
+formulario.onsubmit = mostrarAlert;
 
 function mostrarAlert () {
+
     Swal.fire({
         position: 'top-end',
         icon: 'success',
         title: 'Your request has been saved',
         showConfirmButton: false,
-        timer: 1000
+        timer: 1500
       })
     }
 
 
-// 4. FETCH
+// 4. FETCH ENTREGA FINAL 1
 
+/*
 function registrarProducto (producto) {
     fetch("https://jsonplaceholder.typicode.com/posts/1/comments", {
         method: "POST",
@@ -168,9 +170,8 @@ function registrarProducto (producto) {
         }
     })
     .then((response) => response.json())
-    .then ((data) => console.log(data))
+    .then ((json) => console.log(json))
 }
-
 
 const productoARegistrar = {
     "nombre": "Zapatilla",
@@ -182,3 +183,30 @@ const productoARegistrar = {
 
 
 registrarProducto(productoARegistrar)
+
+*/
+
+
+// CORRECIÓN FETCH 
+const contenedorComentarios = document.getElementById ("comentario")
+
+function obtenerComentario () {
+  fetch("https://jsonplaceholder.typicode.com/comments")
+  .then ((response) => {
+    console.log (response)
+    return response.json()
+  })
+  .then((data) => {
+    console.log(data)
+    console.log (data [0].body)
+
+    data.forEach((comentario) => {
+      let columna = document.createElement("div")
+      columna.className = "col-md-3"
+      columna.innerHTML = `<p>${comentario.body}</p>`
+      contenedorComentarios.appendChild(columna)
+    })
+  })
+}
+
+obtenerComentario()
