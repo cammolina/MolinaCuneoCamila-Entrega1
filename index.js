@@ -144,10 +144,10 @@ console.log("Size:" + size)
 // 3. SWEAT ALERT
 
 const formulario = document.getElementById ("formulario");
-formulario.onsubmit = mostrarAlert;
+formulario.onsubmit = (event) => mostrarAlert(event);
 
-function mostrarAlert () {
-
+function mostrarAlert (event) {
+  event.preventDefault()
     Swal.fire({
         position: 'top-end',
         icon: 'success',
